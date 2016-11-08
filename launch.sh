@@ -9,4 +9,4 @@ if [ -a $OFFSET_FILE ]
       `echo "1" > $OFFSET_FILE`;
 fi
 echo $N  "$OFFSET_FILE"
-tail -f -n +$N "$FILENAME" | { ./.stack-work/install/x86_64-linux/lts-7.8/8.0.1/bin/lship-exe --offset-out $OFFSET_FILE; pkill -P$$ tail; }
+tail -f -n +$N "$FILENAME" | { stack exec -- lship-exe --offset-out $OFFSET_FILE; pkill -P$$ tail; }
